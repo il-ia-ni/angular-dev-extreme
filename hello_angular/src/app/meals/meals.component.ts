@@ -20,7 +20,4 @@ export class MealsComponent implements OnInit {  // always declare a comp cls wi
   onSelect(meal: Meal): void {
     this.selectedMeal = meal;
   }
-
-
-
 }

@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MealsComponent } from './meals/meals.component';
+import { MealDetailComponent } from './meal-detail/meal-detail.component';
 
 @NgModule({
   declarations: [  // Declarables are components, directives and pipes
-    AppComponent, MealsComponent  // Meals comp got automatically declared by Angular CLI https://v5.angular.io/tutorial/toh-pt1#declare-heroescomponent
+    AppComponent, MealsComponent, MealDetailComponent  // Meals comp got automatically declared by Angular CLI https://v5.angular.io/tutorial/toh-pt1#declare-heroescomponent
   ],
   imports: [  // other NgModules that this particular module needs to function properly
     BrowserModule,

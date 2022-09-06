@@ -1,0 +1,9 @@
+<div *ngIf="meal">  <!-- Conditional if-directive for the template. See @ https://v5.angular.io/tutorial/toh-pt2#hide-empty-details-with-ngif -->
+  <h2>{{ meal.name | uppercase }} Details</h2>  <!-- uppercase is an applied pipe to make the text capital. See @ https://v5.angular.io/guide/pipes -->
+  <div><span>id: </span>{{meal.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="meal.name" placeholder="name">  <!-- ngModel is a part of BrowserModule and allows a two-way-binding of data! BrowserModule must be imported in the App Module first. -->
+    </label>
+  </div>
+</div>
