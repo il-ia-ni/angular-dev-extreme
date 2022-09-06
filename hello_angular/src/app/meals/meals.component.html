@@ -1,8 +1,22 @@
-<h2>{{meal.name | uppercase }} Details</h2>  <!-- The word 'uppercase' in the interpolation binding, right after the pipe operator ( | ), activates the built-in UppercasePipe. Pipes are a good way to format strings, currency amounts, dates and other display data. Angular ships with several built-in pipes and you can create your own. See @ https://v5.angular.io/guide/pipes-->
-<div><span>Meal id: </span>{{meal.id}}</div>
-<div><span>Meal name: </span>{{meal.name}}</div>
-<div>
-  <label>name:
-    <input [(ngModel)]="meal.name" placeholder="name">  <!-- Two-way binding between the textbox and the obj prop 'name', data flows from the component class out to the screen and from the screen back to the class. IMPORT of Angular FormsModule in the App nodule is necessary for this to work!!! -->
-  </label>
+<h2>Menu of the Day Details</h2>
+<ul class="meals">
+  <li
+    *ngFor="let meal of meals"
+    (click)="onSelect(meal)"
+    [class.selected]="meal === selectedMeal">
+    <!-- *ngFor-directive allows creating a loop from a list item meals declared in the .ts of the component -->
+    <!-- (click)=... is the event binding to the event handler function onSelect in the meals.component.ts. See @ https://v5.angular.io/tutorial/toh-pt2#add-a-click-event-binding-->
+    <!-- [class.selected] adds a selected class to a currently selected li item (li item that is also dispatched to the event handler func). See https://v5.angular.io/tutorial/toh-pt2#style-the-selected-hero -->
+    <span class="badge">{{meal.id}}</span> {{meal.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedMeal">  <!-- Conditional if-directive for the template. See @ https://v5.angular.io/tutorial/toh-pt2#hide-empty-details-with-ngif -->
+  <h2>{{ selectedMeal.name | uppercase }} Details</h2>  <!-- uppercase is an applied pipe to make the text capital. See @ https://v5.angular.io/guide/pipes -->
+  <div><span>id: </span>{{selectedMeal.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedMeal.name" placeholder="name">  <!-- ngModel is a part of BrowserModule and allows a two-way-binding of data! BrowserModule must be imported in the App Module first. -->
+    </label>
+  </div>
 </div>
