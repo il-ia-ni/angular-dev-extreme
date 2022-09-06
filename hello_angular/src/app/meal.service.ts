@@ -22,4 +22,10 @@ export class MealService {
     return of(MEALS);  // A returned Observable must be subscribed to in the using components!
     // of() returns an Observable that emits a single value, the array of mock meals. == HttpClient.get<Meal[]>() from a latter tutorial, returns the same array from a body of a HTTP respond
   }
+
+  getMeal(id: number): Observable<Meal> {
+    // TODO: send the message _after_ fetching the meal
+    this.messageService.add(`MealService reports: fetched meal with id=${id}`);  // backticks (`) define a JS template literal for embedding the id
+    return of(MEALS.find(meal => meal.id === id)!);
+  }
 }

@@ -1,15 +1,9 @@
 <h2>Menu of the Day Details</h2>
 
 <ul class="meals">
-  <li
-    *ngFor="let meal of meals"
-    (click)="onSelect(meal)"
-    [class.selected]="meal === selectedMeal">
-    <!-- *ngFor-directive allows creating a loop from a list item meals declared in the .ts of the component -->
-    <!-- (click)=... is the event binding to the event handler function onSelect in the meals.component.ts. See @ https://v5.angular.io/tutorial/toh-pt2#add-a-click-event-binding-->
-    <!-- [class.selected] adds a selected class to a currently selected li item (li item that is also dispatched to the event handler func). See https://v5.angular.io/tutorial/toh-pt2#style-the-selected-hero -->
-    <span class="badge">{{meal.id}}</span> {{meal.name}}
+  <li *ngFor="let meal of meals">
+    <a routerLink="/detail/{{meal.id}}">
+      <span class="badge">{{meal.id}}</span> {{meal.name}}
+    </a>
   </li>
 </ul>
-
-<app-meal-detail [meal]="selectedMeal"></app-meal-detail>  <!-- meal-detail to meal is a child-to-parent relationship. [meal]="selectedMeal" is a ONE-way-binding. See @ https://v5.angular.io/tutorial/toh-pt3#show-the-herodetailcomponent-->

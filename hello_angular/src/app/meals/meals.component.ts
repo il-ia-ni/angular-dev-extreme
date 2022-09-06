@@ -10,7 +10,6 @@ import { MealService } from '../meal.service';
 export class MealsComponent implements OnInit {  // always declare a comp cls with EXPORT to be able to use it in the App module
 
   meals!: Meal[];
-  selectedMeal!: Meal;
 
   constructor(private mealService: MealService) { }  // Injecting a service as a private cls prop in its constructor. See @ https://v5.angular.io/tutorial/toh-pt4#inject-the-heroservice
 
@@ -18,10 +17,6 @@ export class MealsComponent implements OnInit {  // always declare a comp cls wi
     /* A lifecycle hook Angular calls ngOnInit shortly after creating a component. It's a good place to put initialization logic. See @ https://v5.angular.io/guide/lifecycle-hooks#oninit */
 
     this.getMeals();  // calls the class method on initializing the component
-  }
-
-  onSelect(meal: Meal): void {
-    this.selectedMeal = meal;
   }
 
   getMeals(): void {

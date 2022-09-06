@@ -1,3 +1,9 @@
 <h1>{{title}}</h1>  <!-- The double curly braces are Angular's interpolation binding syntax -->
-<app-meals></app-meals>
+
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/meals">Meals</a>  <!-- See @ https://v5.angular.io/tutorial/toh-pt5#add-a-navigation-link-routerlink -->
+</nav>
+<router-outlet></router-outlet>  <!-- one of the router directives, is filled with components by the Router based on the UI interaction. See @ https://v5.angular.io/tutorial/toh-pt5#add-routeroutlet -->
+
 <app-messages></app-messages>
