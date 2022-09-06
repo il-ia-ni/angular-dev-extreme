@@ -1,0 +1,11 @@
+/* For this project I have chosen SCSS-styling @ https://sass-lang.com/guide*/
+
+$font-stack: Arial, Arial, Helvetica, sans-serif;
+$font-size: 140%;
+$primary-color: paleturquoise;
+
+.main_title {
+  color: $primary-color;
+  font-family: $font-stack;
+  font-size: $font-size;
+}
