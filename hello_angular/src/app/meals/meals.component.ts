@@ -25,7 +25,8 @@ export class MealsComponent implements OnInit {  // always declare a comp cls wi
   }
 
   getMeals(): void {
-    /* calls the injected service from the cls prop to fetch melas data */
-    this.meals = this.mealService.getMeals();
+    /* subscribes to an Observale returned by calling the injected service from the cls prop. See @ https://v5.angular.io/tutorial/toh-pt4#subscribe-in-heroescomponent */
+    this.mealService.getMeals()
+      .subscribe(meals => this.meals = meals);  // When the request is ready, .subscribe() passes the emitted Meal-array to the callback, which sets the component's heroes property
   }
 }

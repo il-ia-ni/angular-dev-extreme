@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';  // Observables are 1 of ways for asyn data fetch in Angular services. See @ https://v5.angular.io/tutorial/toh-pt4#observable-data
+import { of } from 'rxjs';
+
 import { Meal } from './meal';
 import { MEALS } from './meals-fake-data'
 
@@ -11,8 +14,9 @@ export class MealService {
 
   constructor() { }
 
-  getMeals(): Meal[] {
-    /* A cls method with the synchronous signature for a synchronious fetch of the fake data. See @ https://v5.angular.io/tutorial/toh-pt4#observable-data */
-    return MEALS;
+  getMeals(): Observable<Meal[]> {
+    /* A cls method with the asynchronous signature for an asynchronious fetch of the fake data. */
+    return of(MEALS);  // A returned Observable must be subscribed to in the using components!
+    // of() returns an Observable that emits a single value, the array of mock meals. == HttpClient.get<Meal[]>() from a latter tutorial, returns the same array from a body of a HTTP respond
   }
 }
