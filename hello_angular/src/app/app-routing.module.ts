@@ -14,6 +14,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],  // The method is called forRoot() because you configure the router at the application's root level. The forRoot() method supplies the service providers and directives needed for routing, and performs the initial navigation based on the current browser URL.
-  exports: [RouterModule]  // Exporting RouterModule makes router directives available for use in the AppModule components that will need them.
+  exports: [RouterModule]  // Exporting RouterModule makes router directives available for use in the AppModule components that will need them. F.e., Router-outlet is one of the Router directives that is added in app comp or the routerLink attr for <a>s connecting to the RouterLink directive
 })
 export class AppRoutingModule { }
