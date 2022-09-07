@@ -5,7 +5,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';  // HTTP symbols
 import { catchError, map, tap } from 'rxjs/operators';  // To catch errors, you "pipe" the observable result from http.get() through an RxJS catchError() operator.
 
 import { Meal } from './meal';
-import { MEALS } from './meals-fake-data'
 import { MessageService } from './message.service';
 
 const httpOptions = {
