@@ -1,0 +1,12 @@
+<h3>Top {{meals.length}} Meals</h3>
+
+<div class="grid grid-pad">
+  <a *ngFor="let meal of meals" class="col-1-4"
+    routerLink="/detail/{{meal.id}}">  <!-- *ngFor- interpolation binding with the routerLink attr sets dashboard meal links that are navigated via the parameterized route to the MealDetailComponent created in App routing module -->
+    <div class="module meal">
+      <h4>{{meal.name}}</h4>
+    </div>
+  </a>
+</div>
+
+<app-meal-search></app-meal-search>

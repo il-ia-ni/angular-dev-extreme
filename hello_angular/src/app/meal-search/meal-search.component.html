@@ -1,0 +1,13 @@
+<div id="search-component">
+  <h4>Search for a meal: </h4>
+
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" /> <!-- As the user types in the search box, a keyup event binding calls the component's search() method with the new search box value -->
+
+  <ul class="search-result">
+    <li *ngFor="let meal of meals$ | async" >  <!-- meals$: The $ is a convention that indicates an Observable, not an array. The *ngFor can't do anything with an Observable. But the pipe | async subscribes to an Observable automatically, so there's no need to do it in the components class code. See @ https://v5.angular.io/tutorial/toh-pt6#asyncpipe -->
+      <a routerLink="/detail/{{meal.id}}">
+        {{meal.name}}
+      </a>
+    </li>
+  </ul>
+</div>
