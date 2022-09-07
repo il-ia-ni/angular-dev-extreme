@@ -24,4 +24,28 @@ export class MealsComponent implements OnInit {  // always declare a comp cls wi
     this.mealService.getMeals()
       .subscribe(meals => this.meals = meals);  // When the request is ready, .subscribe() passes the emitted Meal-array to the callback, which sets the component's heroes property
   }
+
+  add(name: string): void {
+    /* Handler function for the button in the template to push a new meal to the server
+    When addMeal saves successfully, the subscribe callback receives the new meal and pushes it into the meals list for display. */
+    name = name.trim();
+    if (!name) { return; };
+
+    this.mealService.addMeal({ name } as Meal)
+      .subscribe((meal: Meal) => {
+        this.meals.push(meal);
+      });
+  }
+
+  delete(meal: Meal): void {
+    /* Handler function for the button to delete a meal in the template
+    Although the component delegates meal deletion to the MealService, it remains responsible for updating its own list of meals!!! It immediately removes the meal-to-delete from that list, anticipating that the MealService will succeed on the server.
+
+    There's nothing for the component to do with the Observable returned by mealService.delete(). HOWEVER it must be subscribed to anyway!!! If you neglect a subscribe(), the service will not send the delete request to the server! As a rule, an Observable does nothing until something subscribes!
+
+    See @ https://v5.angular.io/tutorial/toh-pt6#delete-a-hero*/
+
+    this.meals = this.meals.filter(m => m !== meal);
+    this.mealService.deleteMeal(meal).subscribe();
+  }
 }

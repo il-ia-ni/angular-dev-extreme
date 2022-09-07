@@ -5,5 +5,17 @@
     <a routerLink="/detail/{{meal.id}}">
       <span class="badge">{{meal.id}}</span> {{meal.name}}
     </a>
+    <button class="delete" title="Delete meal" (click)="delete(meal)">x</button>
   </li>
 </ul>
+
+<div>
+  <label>Meal name:
+    <input #mealName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(mealName.value); mealName.value=''">
+    <!-- in response to a click event, call the component's click handler and then clear the input field -->
+    Add meal!
+  </button>
+</div>

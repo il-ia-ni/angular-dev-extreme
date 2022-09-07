@@ -36,4 +36,11 @@ export class MealDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    /* persists meal name changes using the meal service updateMeal() method
+      navigates back to the previous view */
+    this.mealService.updateMeal(this.meal)
+      .subscribe(() => this.goBack());
+  }
+
 }
