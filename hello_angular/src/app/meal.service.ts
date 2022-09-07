@@ -90,7 +90,7 @@ export class MealService {
       .pipe(
         tap(_ => this.log(`deleted meal with id=${id}`)),
         catchError(this.handleError<Meal>('deleteMeal'))
-    );
+      );
   }
 
   /* Log a HeroService message with the MessageService */
@@ -117,5 +117,23 @@ export class MealService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  searchMeals(term: string): Observable<Meal[]> {
+    /* GET meals with names containing a search input current value
+    the URL includes a query string with the search term
+
+    See @ https://v5.angular.io/tutorial/toh-pt6#search-by-name
+    */
+
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Meal[]>(`api/meals/?name=${term}`).
+      pipe(
+        tap(_ => this.log(`found meals matching search: "${term}"`)),
+        catchError(this.handleError<Meal[]>('searchMeals', []))
+      );
   }
 }

@@ -13,10 +13,11 @@ import { MealService } from './meal.service';
 import { MessageService } from './message.service';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MealSearchComponent } from './meal-search/meal-search.component';
 
 @NgModule({
   declarations: [  // Declarables are components, directives and pipes
-    AppComponent, MealsComponent, MealDetailComponent, MessagesComponent, DashboardComponent  // Meals comp got automatically declared by Angular CLI https://v5.angular.io/tutorial/toh-pt1#declare-heroescomponent
+    AppComponent, MealsComponent, MealDetailComponent, MessagesComponent, DashboardComponent, MealSearchComponent  // Meals comp got automatically declared by Angular CLI https://v5.angular.io/tutorial/toh-pt1#declare-heroescomponent
   ],
   imports: [  // other NgModules that this particular module needs to function properly
     BrowserModule,
