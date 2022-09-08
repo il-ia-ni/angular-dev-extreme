@@ -3,7 +3,40 @@
 <dx-data-grid
   id="dataGrid"
   [dataSource]="meals"
-  keyExpr="ID">
+  keyExpr="ID"
+  [allowColumnReordering]="true"
+  [allowColumnResizing]="true">
+
+    <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+    <dxi-column
+        dataField="ID"
+        dataType="number">
+    </dxi-column>
+    <dxi-column
+        dataField="Name"
+        dataType="string">
+    </dxi-column>
+    <dxi-column
+        dataField="Price"
+        dataType="number">
+    </dxi-column>
+    <dxi-column
+        dataField="Description"
+        dataType="string">
+    </dxi-column>
+    <dxi-column
+        dataField="Ingredients"
+        dataType="string">
+    </dxi-column>
+    <dxi-column
+        dataField="Energy"
+        dataType="string"
+        [visible]="false">
+    </dxi-column>
+    <dxi-column
+        dataField="Vegan"
+        dataType="boolean">
+    </dxi-column>
 </dx-data-grid>
 
 <dx-select-box
