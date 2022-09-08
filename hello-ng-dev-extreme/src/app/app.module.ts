@@ -8,6 +8,8 @@ import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
 
+import { MealsService } from './meals.service';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -28,7 +30,8 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     AuthService,
     ScreenService,
-    AppInfoService
+    AppInfoService,
+    MealsService
   ],
   bootstrap: [AppComponent]
 })

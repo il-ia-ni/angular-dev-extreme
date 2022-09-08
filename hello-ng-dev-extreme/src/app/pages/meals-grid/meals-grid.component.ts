@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meal, MealsService } from '../../meals.service';
 
 @Component({
   selector: 'app-meals-grid',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MealsGridComponent implements OnInit {
 
-  constructor() { }
+  meals!: Meal[];
+
+  constructor(service: MealsService) {
+    this.meals = service.getMeals();
+  }
+
+  getDisplayExpr(item: Meal) {
+    return item && item.Name + ' ' + item.Description + ' ' + item.Price + '€';
+  }
 
   ngOnInit(): void {
   }

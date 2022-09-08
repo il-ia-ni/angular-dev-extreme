@@ -1,4 +1,13 @@
 <h2 class="content-block">Meals Grid</h2>
-<div class="content-block">
-    <div class="dx-card responsive-paddings">Put your content here</div>
-</div>
+
+<dx-data-grid
+  id="dataGrid"
+  [dataSource]="meals"
+  keyExpr="ID">
+</dx-data-grid>
+
+<dx-select-box
+  [dataSource]="meals"
+  valueExpr="ID"
+  [displayExpr]="getDisplayExpr">
+</dx-select-box>
