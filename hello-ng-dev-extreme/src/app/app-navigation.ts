@@ -1,4 +1,5 @@
 export const navigation = [
+  // contains the layout of nav-toolbar in the app
   {
     text: 'Home',
     path: '/home',
@@ -17,5 +18,21 @@ export const navigation = [
         path: '/tasks'
       }
     ]
-  }
+  },
+  {
+    text: 'Ilia Pages',
+    icon: 'product',
+    items: [
+      {
+        text: 'Meals Grid',
+        path: '/pages/meals-grid',
+        icon: 'columnfield'
+      },
+      {
+        text: 'Ingredients Tree',
+        path: '/pages/ingredients-tree',
+        icon: 'hierarchy'
+      },
+    ]
+  },
 ];

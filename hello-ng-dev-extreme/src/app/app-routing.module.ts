@@ -6,8 +6,20 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { DxDataGridModule, DxFormModule, DxButtonModule } from 'devextreme-angular';
+import { MealsGridComponent } from './pages/meals-grid/meals-grid.component';
+import { IngredientsTreeComponent } from './pages/ingredients-tree/ingredients-tree.component';
 
 const routes: Routes = [
+  {
+    path: 'pages/ingredients-tree',
+    component: IngredientsTreeComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'pages/meals-grid',
+    component: MealsGridComponent,
+    canActivate: [ AuthGuardService ]
+  },
   {
     path: 'tasks',
     component: TasksComponent,
@@ -50,13 +62,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule, DxButtonModule],
+  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule, DxButtonModule ],
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [
     HomeComponent,
     ProfileComponent,
-    TasksComponent
+    TasksComponent,
+    MealsGridComponent,
+    IngredientsTreeComponent
   ]
 })
 export class AppRoutingModule { }
