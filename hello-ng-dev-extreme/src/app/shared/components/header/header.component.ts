@@ -17,6 +17,9 @@ export class HeaderComponent implements OnInit {
   @Output()
   menuToggle = new EventEmitter<boolean>();
 
+  @Output()
+  search = new EventEmitter<void>();
+
   @Input()
   menuToggleEnabled = false;
 
@@ -49,6 +52,10 @@ export class HeaderComponent implements OnInit {
   toggleMenu = () => {
     this.menuToggle.emit();
   }
+
+  startSearch = () => {
+    this.search.emit();
+}
 }
 
 @NgModule({
@@ -58,7 +65,7 @@ export class HeaderComponent implements OnInit {
     UserPanelModule,
     DxToolbarModule
   ],
-  declarations: [ HeaderComponent ],
-  exports: [ HeaderComponent ]
+  declarations: [HeaderComponent],
+  exports: [HeaderComponent]
 })
 export class HeaderModule { }

@@ -97,6 +97,10 @@ export class SideNavInnerToolbarComponent implements OnInit {
       this.menuOpened = true;
     }
   }
+
+  search() {
+    alert("search is coming soon!");
+}
 }
 
 @NgModule({
