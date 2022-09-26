@@ -15,7 +15,7 @@ export class AppComponent implements AfterViewInit {  // Components implementing
     .pipe(  // A pipe of the observable contains operators for manipulation of the Observable
       map(count => count * 6),  // Operator turns every generated value from a 360* to a 60Sec unit to imitate a seconds arrow
       tap(degrees => console.log('Observable generates interval value: ', degrees)),  // Operator inserts code lines between other pipe options
-      filter(degrees => degrees % 10 === 0)  // Operator filters the output values that the subscribed to Observable will return
+      filter(degrees => degrees % 10 === 0)  // Operator filters the output values that the subscribed to Observable will return. Here it displays only values dividable by 10
       // Other Operators are available here: @ https://www.learnrxjs.io/learn-rxjs/operators
     );
   // The Observable is not subscribed here directly, it is subscribed using the async pipe in the components view instead! Benefit: Angular takes care of the "leaking", closing the Observable automatically once the View get closed / switched
