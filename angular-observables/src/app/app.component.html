@@ -1,6 +1,6 @@
 <button #button>Click me!</button>
 
-<div [style.transform]="'rotate(' + (interval$ | async) + 'deg)'"/>  <!-- Sets a transform style f.e. rotate(10deg) asynchrously from a value of the subscribed to observable -->
+<div [style.transform]="'rotate(' + (interval$ | async) + 'deg)'"></div>  <!-- Sets a transform style f.e. rotate(10deg) asynchrously from a value of the subscribed to observable -->
 
 <ul>
   <li *ngFor="let value of values">{{value}}</li>
