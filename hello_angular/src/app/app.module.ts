@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';  // Allows two-way binding in templates of components with [(ngModel)]="var...."  syntax
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';  // See setting it up in importd [] per manual @ @https://v5.angular.io/tutorial/toh-pt6#simulate-a-data-server
