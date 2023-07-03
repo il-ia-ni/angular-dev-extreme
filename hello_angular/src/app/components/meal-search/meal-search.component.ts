@@ -5,8 +5,8 @@ import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
 
-import { Meal } from '../meal';
-import { MealService } from '../meal.service';
+import { Meal } from '../../services/in-memory-data-service/meal';
+import { MealService } from '../../services/meal-service/meal.service';
 
 @Component({
   selector: 'app-meal-search',
@@ -44,6 +44,6 @@ export class MealSearchComponent implements OnInit {
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.mealService.searchMeals(term)),  // Even with a 300ms pause between requests, you could have multiple HTTP requests in flight and they may not return in the order sent. switchMap() preserves the original request order while returning only the observable from the most recent HTTP method call. Results from prior calls are canceled and discarded. Note that canceling a previous searchHeroes() Observable doesn't actually abort a pending HTTP request. Unwanted results are simply discarded before they reach your application code.
     );
-    // Remember: the component class does not subscribe to the heroes$ observable. That's the job of the AsyncPipe in the template!
+    // Remember: the component class does not subscribe to the meals$ observable. That's the job of the AsyncPipe "... | async" in the template!
   }
 }

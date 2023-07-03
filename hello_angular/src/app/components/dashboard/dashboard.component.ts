@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Meal } from '../meal';
-import { MealService } from '../meal.service';
+import { Meal } from '../../services/in-memory-data-service/meal';
+import { MealService } from '../../services/meal-service/meal.service';
 
 @Component({
   selector: 'app-dashboard',

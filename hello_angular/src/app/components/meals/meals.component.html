@@ -1,7 +1,7 @@
 <h2>Menu of the Day Details</h2>
 
 <ul class="meals">
-  <li *ngFor="let meal of meals">
+  <li *ngFor="let meal of fetchedMeals">
     <a routerLink="/detail/{{meal.id}}">
       <span class="badge">{{meal.id}}</span> {{meal.name}}
     </a>
@@ -14,7 +14,7 @@
     <input #mealName />
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(mealName.value); mealName.value=''">
+  <button (click)="addCustomMeal(mealName.value); mealName.value=''">
     <!-- in response to a click event, call the component's click handler and then clear the input field -->
     Add meal!
   </button>

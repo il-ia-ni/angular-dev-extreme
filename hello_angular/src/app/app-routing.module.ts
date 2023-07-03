@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MealsComponent } from './meals/meals.component';
-import { DashboardComponent }   from './dashboard/dashboard.component';
-import { MealDetailComponent }  from './meal-detail/meal-detail.component';
+import { MealsComponent } from './components/meals/meals.component';
+import { DashboardComponent }   from './components/dashboard/dashboard.component';
+import { MealDetailComponent }  from './components/meal-detail/meal-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },  // a default route in case of no match / initial load. Forwards to the dashboard

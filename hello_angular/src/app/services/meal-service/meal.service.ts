@@ -4,26 +4,27 @@ import { of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';  // HTTP symbols for the tutorial https://v5.angular.io/tutorial/toh-pt6
 import { catchError, map, tap } from 'rxjs/operators';  // To catch errors, you "pipe" the observable result from http.get() through an RxJS catchError() operator.
 
-import { Meal } from './meal';
-import { MessageService } from './message.service';
+import { Meal } from '../in-memory-data-service/meal';
+import { MessageService } from '../message-service/message.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })  // The meals web API expects a special header in HTTP save requests.
 };
 
-@Injectable({
+/* A MealService registered in @NgModule of app.module is globally available to any components that may need to get Meals' data but don't need to know anything about each other. It is used by Angular dependency injection framework to implement the service into normal components based on DI Design Pattern. See @ https://v5.angular.io/guide/dependency-injection.
+*/
+@Injectable({  // The @Injectable() decorator states that a service class itself might require injected dependencies. It means other dependencies might also be injected into the service. The good practice is to always keep it: @Injectable() is a required coding style for services. F.e. in this service we inject a MessageService. See @ https://v5.angular.io/guide/dependency-injection#injectable
   providedIn: 'root'
 })
 export class MealService {
-  /* A service globally available to any components that all need to get Meals data but don't need to know anything about each other. Is used by Angular dependency injection to implement the service into normal components. See @ https://v5.angular.io/guide/dependency-injection.
-  Injectable decorator means other dependencies might also be injected into the service. The good practice is to always keep it */
+
 
   private mealsUrl = 'api/meals';  // URL to web api imitating client-server- See @ https://github.com/angular/in-memory-web-api#readme
 
   constructor(
     private http: HttpClient,  // all its methods return an RxJS Observable of something (generally, emit multiple values). An Observable from HttpClient always emits a single value and then completes, never to emit again. See @https://v5.angular.io/tutorial/toh-pt6#http-methods-return-one-value
 
-    private messageService: MessageService) { }  // Injecting another Service into the Meal Service (service-in-service
+    private messageService: MessageService) { }  // Injecting another Service into the Meal Service (service-in-service)
 
   getMeals(): Observable<Meal[]> {
     /** GET meals from the server (No more simulation of Observables)
@@ -79,7 +80,7 @@ export class MealService {
   }
 
   deleteMeal(meal: Meal | number): Observable<Meal> {
-    /** DELETE: delete the hero from the server
+    /** DELETE: delete the meal from the server
      * HttpClient.delete() method takes two parameters: URL, options for HTTP header of save requests
     */
     const id = typeof meal === 'number' ? meal : meal.id;

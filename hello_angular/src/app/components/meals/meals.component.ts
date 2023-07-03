@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Meal } from '../meal';
-import { MealService } from '../meal.service';
+import { Meal } from '../../services/in-memory-data-service/meal';
+import { MealService } from '../../services/meal-service/meal.service';
 
 @Component({  // decorator function that specifies the Angular metadata for the component
   selector: 'app-meals',  // the component's CSS element selector, matches the name of the HTML element that identifies this component within a parent component's html-template (see app.component.html)
@@ -9,23 +9,23 @@ import { MealService } from '../meal.service';
 })
 export class MealsComponent implements OnInit {  // always declare a comp cls with EXPORT to be able to use it in the App module
 
-  meals!: Meal[];
+  fetchedMeals!: Meal[];
 
   constructor(private mealService: MealService) { }  // Injecting a service as a private cls prop in its constructor. See @ https://v5.angular.io/tutorial/toh-pt4#inject-the-heroservice
 
   ngOnInit(): void {
     /* A lifecycle hook Angular calls ngOnInit shortly after creating a component. It's a good place to put initialization logic. See @ https://v5.angular.io/guide/lifecycle-hooks#oninit */
 
-    this.getMeals();  // calls the class method on initializing the component
+    this.callMealsService();  // calls the class method on initializing the component
   }
 
-  getMeals(): void {
-    /* subscribes to an Observale returned by calling the injected service from the cls prop. See @ https://v5.angular.io/tutorial/toh-pt4#subscribe-in-heroescomponent */
+  callMealsService(): void {
+    /* subscribes to an Observable returned by calling the injected service from the cls prop. See @ https://v5.angular.io/tutorial/toh-pt4#subscribe-in-heroescomponent */
     this.mealService.getMeals()
-      .subscribe(meals => this.meals = meals);  // When the request is ready, .subscribe() passes the emitted Meal-array to the callback, which sets the component's heroes property
+      .subscribe(serviceOutput => this.fetchedMeals = serviceOutput);  // When the request is ready, .subscribe() passes the emitted serviceOutput-array to the callback, which sets the component's heroes property
   }
 
-  add(name: string): void {
+  addCustomMeal(name: string): void {
     /* Handler function for the button in the template to push a new meal to the server
     When addMeal saves successfully, the subscribe callback receives the new meal and pushes it into the meals list for display. */
     name = name.trim();
@@ -33,7 +33,7 @@ export class MealsComponent implements OnInit {  // always declare a comp cls wi
 
     this.mealService.addMeal({ name } as Meal)
       .subscribe((meal: Meal) => {
-        this.meals.push(meal);
+        this.fetchedMeals.push(meal);
       });
   }
 
@@ -45,7 +45,7 @@ export class MealsComponent implements OnInit {  // always declare a comp cls wi
 
     See @ https://v5.angular.io/tutorial/toh-pt6#delete-a-hero*/
 
-    this.meals = this.meals.filter(m => m !== meal);
+    this.fetchedMeals = this.fetchedMeals.filter(m => m !== meal);
     this.mealService.deleteMeal(meal).subscribe();
   }
 }

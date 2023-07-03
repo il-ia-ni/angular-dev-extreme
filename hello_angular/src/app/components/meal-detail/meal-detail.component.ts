@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { MealService } from '../meal.service';
-import { Meal } from '../meal';
+import { MealService } from '../../services/meal-service/meal.service';
+import { Meal } from '../../services/in-memory-data-service/meal';
 
 @Component({
   selector: 'app-meal-detail',

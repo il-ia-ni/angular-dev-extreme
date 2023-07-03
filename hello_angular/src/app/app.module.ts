@@ -3,17 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';  // See setting it up in importd [] per manual @ @https://v5.angular.io/tutorial/toh-pt6#simulate-a-data-server
-import { InMemoryDataService } from './in-memory-data.service';
+import { InMemoryDataService } from './services/in-memory-data-service/in-memory-data.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MealsComponent } from './meals/meals.component';
-import { MealDetailComponent } from './meal-detail/meal-detail.component';
-import { MealService } from './meal.service';
-import { MessageService } from './message.service';
-import { MessagesComponent } from './messages/messages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MealSearchComponent } from './meal-search/meal-search.component';
+import { MealsComponent } from './components/meals/meals.component';
+import { MealDetailComponent } from './components/meal-detail/meal-detail.component';
+import { MealService } from './services/meal-service/meal.service';
+import { MessageService } from './services/message-service/message.service';
+import { MessagesComponent } from './components/messages/messages.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MealSearchComponent } from './components/meal-search/meal-search.component';
 
 @NgModule({
   declarations: [  // Declarables are components, directives and pipes
@@ -31,7 +31,10 @@ import { MealSearchComponent } from './meal-search/meal-search.component';
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [MealService, MessageService, InMemoryDataService],  // list of the services the app needs. This is only 1 of 3 possible places to provide a service! See @ https://v5.angular.io/tutorial/toh-pt4#provide-the-heroservice
+  // Providers tell the injector framework how to create the service. Without a provider, the injector would not know that it is responsible for injecting the service nor be able to create the service. See @ https://v5.angular.io/guide/dependency-injection
+  // See also @ https://v5.angular.io/guide/dependency-injection#ngmodule-providers and @ https://v5.angular.io/tutorial/toh-pt4#provide-the-heroservice
+  providers: [MealService, MessageService, InMemoryDataService],  // list of the services the app globally uses. Registering providers in @NgModule is only 1 of 3 possible places to provide a service! Another option would be to add it in each component's personal injector through @Component({... providers: [ MealService, ... ] ...}). The choise where to register a provider affects service's scope and lifetime! See @ https://v5.angular.io/guide/dependency-injection#ngmodule-or-component
+
   bootstrap: [AppComponent]  // entry components of the app, the app is started with it
 })
 export class AppModule { }
